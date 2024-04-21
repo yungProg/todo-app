@@ -10,16 +10,19 @@
     <div class="container">
         <aside class="aside">
             <h2 class="list-type">Private</h2>
-            <button class="list-name">
-                <span>Emoji</span>
-                <p>List Name</p>
-                <span id="number-of-tasks">2</span>
-            </button>
+            <div class="lists">
+              <button class="list-name">
+                  <span>Emoji</span>
+                  <p>List Name</p>
+                  <span id="number-of-tasks">2</span>
+              </button>
+            </div>
             <button id="create-list">
                 <span>&plus;</span>
                 <p>Create new list</p>
             </button>
         </aside>
+        
         <main class="main">
             <section class="intro">
                 <div class="welcome">
@@ -71,9 +74,15 @@
                 <span>Create new task</span>
             </button>
         </div>
-        <dialog>
-            ll
+        <dialog id="add-list-dialog">
+            <form>
+              <label for="enter-list">List Name</label><<br>
+              <input type="text" id="enter-list">
+              <button class="close-btn">X</button>
+              <button id="add-list" type="button">Add list</button>
+            </form>
         </dialog>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

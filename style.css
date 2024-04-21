@@ -144,3 +144,11 @@ body {
 button:hover, input[type="checkbox"] {
     cursor: pointer;
 }
+
+
+#add-list-dialog {
+  position: absolute;
+  top: 92vh;
+  left: 50%;
+  transform: translateX(-50%)
+}
