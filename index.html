@@ -1,100 +1,79 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ToDo</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
-<script src="https://kit.fontawesome.com/7692c4ef1d.js" crossorigin="anonymous"></script>
-<body id="body">
-    <div id="app-container">
-        <aside id="aside">
-            <h1 id="aside-title">Private</h1>
-
-                <div id="list-container">
-                    <button class="category">
-                        <span class="emoji">🏠</span>
-                        <p class="cat">Home</p>
-                        <span class="items-in-cat">8</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">✔️</span>
-                        <p class="cat">Completed</p>
-                        <span class="items-in-cat">16</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">👑</span>
-                        <p class="cat">Personal</p>
-                        <span class="items-in-cat">4</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">💹</span>
-                        <p class="cat">Work</p>
-                        <span class="items-in-cat">6</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">💪🏽</span>
-                        <p class="cat">Diet</p>
-                        <span class="items-in-cat">3</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">📚</span>
-                        <p class="cat">List of Books</p>
-                        <span class="items-in-cat">8</span>
-                    </button>
-                
-                    <button class="category">
-                        <span class="emoji">🚗</span>
-                        <p class="cat">Road trip list</p>
-                        <span class="items-in-cat">6</span>
-                    </button>
-            </div>
-
-                <button onclick="closeForm()" class="create create-new-list category" id="create-new-list">
-                    &plus; Create new list
-                </button>
-
+<body>
+    <div class="container">
+        <aside class="aside">
+            <h2 class="list-type">Private</h2>
+            <button class="list-name">
+                <span>Emoji</span>
+                <p>List Name</p>
+                <span id="number-of-tasks">2</span>
+            </button>
+            <button id="create-list">
+                <span>&plus;</span>
+                <p>Create new list</p>
+            </button>
         </aside>
-        <main id="main-container">
-            <div id="header">
-                <div id="welcome">
-                    <h1 id="greetings"></h1>
-                    <p id="today-date"></p>
+        <main class="main">
+            <section class="intro">
+                <div class="welcome">
+                    <h2>Customized greeting</h2>
+                    <p class="today-date">Today's date</p>
                 </div>
-                <div id="date-select">
-                    <select>
+                <div class="date-select">
+                    <select name="select-date" id="select-date">
                         <option value="today">Today</option>
-                        <option value="#">Date</option>
                     </select>
-                    <i class="fa-solid fa-bars"></i>
                 </div>
-            </div>
-            <div id="task" class="task">
-                <input type="checkbox" name="task1" id="task1"><label for="task1">Read a book</label><p class="time"><i class="fa-regular fa-clock"></i> 08:00 - 09:00</p><i class="fa-solid fa-ellipsis-vertical"></i>
-            </div>
+            </section>
+            <section class="todos">
+                <div class="todo">
+                    <input type="checkbox" name="task-complete" id="task-complete">
+                    <p class="task">Task name</p>
+                    <span class="emoji">Emoji</span>
+                    <span class="tag">tags</span>
+                    <div class="deadline">
+                        <span>Time emoji</span>
+                        <span>From</span>
+                        <span>-</span>
+                        <span>To</span>
+                    </div>
+                    <button class="edit">
+                        &tridot;
+                    </button>
+                </div>
+                <div class="todo">
+                    <input type="checkbox" name="task-complete" id="task-complete">
+                    <p class="task">Task name</p>
+                    <span class="emoji">Emoji</span>
+                    <span class="tag">tags</span>
+                    <div class="deadline">
+                        <span>Time emoji</span>
+                        <span>From</span>
+                        <span>-</span>
+                        <span>To</span>
+                    </div>
+                    <button class="edit">
+                        &tridot;
+                    </button>
+                </div>
+            </section>
         </main>
+        <div class="create-task">
+            <button id="create-task-btn">
+                <span>&plus;</span>
+                <span>Create new task</span>
+            </button>
+        </div>
+        <dialog>
+            ll
+        </dialog>
     </div>
-    <button id="create-new-task">&plus; Create new Task</button>
-
-    
-    <form id="add-new-list" class="add-new-list hidden">
-        <i class="fa-solid fa-xmark" id="close-list-form-btn" onclick="closeForm()"></i>
-        <label for="list-title">List Name</label><br/>
-        <input type="text" name="list-title" id="list-title" class="list-title"><br/>
-        <label for="list-nums">Number of List Items</label><br/>
-        <input type="number" name="list-nums" id="list-nums" class="list-nums">
-        <button id="add-new-list-btn" type="button" onclick="createNewList()">Add List</button>
-    </form>
-    
-
-    <script src="script.js"></script>
 </body>
 </html>
