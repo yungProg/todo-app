@@ -26,7 +26,7 @@
         <main class="main">
             <section class="intro">
                 <div class="welcome">
-                    <h2>Customized greeting</h2>
+                    <h2 id="greet"></h2>
                     <p class="today-date">Today's date</p>
                 </div>
                 <div class="date-select">
@@ -75,11 +75,11 @@
             </button>
         </div>
         <dialog id="add-list-dialog">
-            <form>
-              <label for="enter-list">List Name</label><<br>
-              <input type="text" id="enter-list">
+            <form id="add-list-form" method="dialog">
+              <label for="enter-list">List Name</label><br>
+              <input type="text" id="enter-list-name" autofocus>
               <button class="close-btn">X</button>
-              <button id="add-list" type="button">Add list</button>
+              <button id="add-list" type="submit">Add list</button>
             </form>
         </dialog>
     </div>

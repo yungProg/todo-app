@@ -41,6 +41,7 @@ body {
     border-radius: 5px;
     background: transparent;
     border: none;
+    width: 100%;
 }
 
 #number-of-tasks {
@@ -148,7 +149,46 @@ button:hover, input[type="checkbox"] {
 
 #add-list-dialog {
   position: absolute;
-  top: 92vh;
+  top: 58vh;
   left: 50%;
-  transform: translateX(-50%)
+  transform: translateX(-50%);
+  min-height: 300px;
+  width: 100%;
+  max-width: 420px;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#add-list-form {
+    position: relative;
+}
+
+.close-btn {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#enter-list-name {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    margin: 2vh auto;
+    display: block;
+    border: 1px solid black;
+    outline: none;
+}
+
+#add-list {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    background-color: #2a74ff;
+    color: #ececec;
+}
+
+#enter-list-name, #add-list {
+    border-radius: 5px;
 }
