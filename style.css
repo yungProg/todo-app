@@ -181,7 +181,7 @@ button:hover, input[type="checkbox"] {
     outline: none;
 }
 
-#add-list {
+#add-list-dialog {
     width: 100%;
     padding: 0.5rem;
     font-size: 1.5rem;
@@ -190,5 +190,20 @@ button:hover, input[type="checkbox"] {
 }
 
 #enter-list-name, #add-list {
-    border-radius: 5px;
+    border-radius: 0.85rem;
+}
+
+#add-list {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    margin: 2vh auto;
+    display: block;
+    border: 1px solid black;
+    outline: none;
+    background-color: green;
+}
+
+#add-list:hover {
+    background-color: #1e5e00;
 }

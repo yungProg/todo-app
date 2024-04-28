@@ -3,7 +3,28 @@ const addListDialog = document.getElementById("add-list-dialog")
 const closeDialog = document.querySelector(".close-btn") 
 const addList = document.getElementById("add-list") 
 const submitListForm = document.getElementById("add-list-form")
- 
+
+// End of selectors
+
+// List item object
+
+const listItem = {
+  id: null,
+  name: "",
+  emoji: "emoji",
+  tasks: [],
+  numItems: () => (this.tasks.length),
+}
+
+// End of list item object
+
+// List Array
+
+const lists = []
+
+// End of list array
+
+// Start of functions
 
 createNewList.addEventListener("click", () => {
   addListDialog.showModal()
@@ -29,17 +50,29 @@ function renderList() {
   createNewEl(
   ".lists",
   "button",
-  `<span>Emoji</span> <p> ${listName} </p> <span id = "number-of-tasks"> ${numberOfItems} </span>`,
+  `<span>${listItem.emoji}</span> <p> ${listName} </p> <span id = "number-of-tasks"> ${numberOfItems} </span>`,
   "list-name"
     )
   addListDialog.close()
 }
 
+function addListItemToArray() {
+  let listName = document.getElementById("enter-list-name").value
+  let obj = {
+    ...listItem,
+    id : Date.now(),
+    name: listName,
+  }
+  lists.push(obj)
+}
+
 
 submitListForm.addEventListener("submit", (e) => {
   e.preventDefault()
+  addListItemToArray()
   renderList()
   submitListForm.reset()
+  console.log(lists)
 })
 
 
