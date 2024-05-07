@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calendar</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+      }
+
+      #calendar-container {
+        margin-top: 7vh;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 11px;
+        width: 305px;
+        background-color: beige;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #calendar-header {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+      }
+
+      ul li {
+        flex-basis: 40px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        text-align: center;
+      }
+
+      .days {
+        background-color: green;
+      }
+
+      .dates {
+        background-color: greenyellow;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main id="calendar-container">
+      <div id="calendar-header">
+        <button class="nav left" onclick="navigateCalendar(-1)">Left</button>
+        <select id="month-select"></select>
+        <select id="year-select"></select>
+        <button class="nav right" onclick="navigateCalendar(1)">Right</button>
+      </div>
+      <div class="calendar-body">
+        <ul class="days">
+          <li class="day">Su</li>
+          <li class="day">Mo</li>
+          <li class="day">Tu</li>
+          <li class="day">We</li>
+          <li class="day">Th</li>
+          <li class="day">Fr</li>
+          <li class="day">Sa</li>
+        </ul>
+        <ul class="dates"></ul>
+      </body>
+      <script>
+        // html elements
+        let monthSelection = document.getElementById("month-select")
+        let yearSelection = document.getElementById("year-select")
+        const dates = document.querySelector(".dates")
+        const month = document.querySelectorAll(".date")
+
+
+        // constants
+
+        const numberOfDays = {
+          0 : 31, 
+          1 : 28, 
+          2 : 31, 
+          3 : 30, 
+          4 : 31, 
+          5 : 30, 
+          6 : 31, 
+          7 : 31, 
+          8 : 30, 
+          9 : 31,
+          10 : 30, 
+          11 : 31
+        }
+
+        // functions
+
+        function generateMonths() {
+          const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+          const currentMonth = new Date().getMonth()
+          for (let i = 0; i < monthsOfYear.length; i++) {
+            if (i === currentMonth){
+              monthSelection.innerHTML += `<option class="month" value=${i} selected>${monthsOfYear[i]}</option>`
+            } else {monthSelection.innerHTML += `<option class="month" value=${i}>${monthsOfYear[i]}</option>`}
+          }
+        }
+
+        (function() {
+          generateMonths()
+          const minYear = 1970;
+          const maxYear = 2030;
+          const currentYear = new Date().getFullYear()
+          for (let i = minYear; i <= maxYear; i++) {
+            if (i === currentYear){
+              yearSelection.innerHTML += `<option class="year" value=${i} selected>${i}</option>`
+            } else {yearSelection.innerHTML += `<option class="year" value=${i}>${i}</option>`}
+          }
+        })()
+
+        /*generateMonths()
+        generateYears()*/
+
+        function findFirstDay() {
+          let firstDay = new Date(yearSelection.value, monthSelection.value, 1).getDay()
+          for (let i = 0; i < firstDay; i++) {
+            dates.innerHTML += '<li class="date"></li>'
+          }
+        }
+
+        function generateDates() {
+          // check if it's leap year
+          function isLeapYear() {
+            return ((yearSelection.value % 4 == 0 && yearSelection.value % 100 != 0) || (yearSelection.value % 400 == 0))
+          }
+          for (let i = 1; (isLeapYear() && monthSelection.value == 1) ? i <= numberOfDays[monthSelection.value] + 1 : i <= numberOfDays[monthSelection.value]; i++){
+            dates.innerHTML += `<li class="date">${i}</li>`
+          }
+          console.log(isLeapYear())
+        }
+
+        function createCalendar() {
+          dates.innerHTML = ""
+          findFirstDay()
+          generateDates()
+        }
+
+        createCalendar()
+
+        // Event listeners
+        monthSelection.addEventListener("change", () => {
+            createCalendar()
+          }
+        )
+
+        yearSelection.addEventListener("change", () => {
+            createCalendar()
+          }
+        )
+
+        function navigateCalendar(x) {
+          let y = Number(monthSelection.value) + x
+          //let z = yearSelection.value + x
+          if(y < 0) {
+            monthSelection.value = 11
+            yearSelection.value = Number(yearSelection.value) + x
+          } else if (y > 11) {
+            monthSelection.value = 0
+            yearSelection.value = Number(yearSelection.value) + x
+          } else {monthSelection.value = Number(monthSelection.value) + x}
+          console.log("type of y", typeof y)
+          console.log(y)
+          createCalendar()
+        }
+
+
+      </script>
+    </main>
+  </body>
+</html>
